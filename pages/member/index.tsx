@@ -1,4 +1,4 @@
-import OverViewContent from "../../components/OverViewContent";
+import OverViewContent from "../../components/organisms/OverViewContent";
 import SideBar from "../../components/organisms/SideBar";
 
 export default function MemberOverview() {

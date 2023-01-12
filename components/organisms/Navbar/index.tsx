@@ -3,7 +3,6 @@ import Menu from "./Menu";
 import ToggleMenu from "./ToggleMenu";
 import Auth from "./Auth";
 
-
 export default function Navbar() {
   return (
     <section>
@@ -20,7 +19,7 @@ export default function Navbar() {
               <Menu title="Rewards" />
               <Menu title="Discover" />
               <Menu title="Global Rank" />
-              <Auth isLogin/>
+              <Auth />
             </ul>
           </div>
         </div>

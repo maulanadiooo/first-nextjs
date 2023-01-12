@@ -4,8 +4,16 @@ import CheckoutDetail from "../components/organisms/CheckoutDetail";
 import CheckoutItem from "../components/organisms/CheckoutItem";
 import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer";
+import jwtDecode from "jwt-decode";
+import { jwtPayloadTypes, userTypes } from "../services/dataTypes";
 
-export default function Checkout() {
+interface CheckoutProps {
+  user: userTypes;
+}
+
+export default function Checkout(props: CheckoutProps) {
+  const { user } = props;
+
   return (
     <>
       <Navbar />
@@ -31,4 +39,33 @@ export default function Checkout() {
       <Footer />
     </>
   );
+}
+
+interface GetServerSideProps {
+  req: {
+    cookies: {
+      _t: string;
+    };
+  };
+}
+
+export async function getServerSideProps({ req }: GetServerSideProps) {
+  const { _t } = req.cookies;
+  if (!_t) {
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+  const jwtToken = Buffer.from(_t, "base64").toString("ascii");
+
+  const payload: jwtPayloadTypes = jwtDecode(jwtToken);
+  const userPayload: userTypes = payload.player;
+  return {
+    props: {
+      user: userPayload,
+    },
+  };
 }

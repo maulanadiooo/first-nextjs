@@ -4,23 +4,19 @@ import Link from "next/link";
 interface GameItemProps {
   gameTitle: string;
   gameType: string;
-  imageThumnail:
-    | "Thumbnail-1"
-    | "Thumbnail-2"
-    | "Thumbnail-3"
-    | "Thumbnail-4"
-    | "Thumbnail-5";
+  imageThumbnail: string;
+  id: string;
 }
 
 export default function GameItem(props: GameItemProps) {
-  const { gameTitle, gameType, imageThumnail } = props;
+  const { gameTitle, gameType, imageThumbnail, id } = props;
   return (
     <div className="featured-game-card position-relative">
-      <Link href="/detail">
+      <Link href={`/detail/${id}`}>
         <div className="blur-sharp">
           <Image
             className="thumbnail"
-            src={`/img/${imageThumnail}.png`}
+            src={imageThumbnail}
             width={205}
             height={270}
             alt="Thumbnail"

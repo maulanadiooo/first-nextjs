@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 export default function SignupPhoto() {
   const [gameCategory, setGameCategory] = useState([]);
   const [favorite, setFavorite] = useState("");
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [image, setImage] = useState<any>(null);
+  const [imagePreview, setImagePreview] = useState<any>(null);
   const [localFormState, setLocalformState] = useState({
     name: "",
     email: "",
@@ -81,7 +81,7 @@ export default function SignupPhoto() {
                   name="avatar"
                   accept="image/png, image/jpeg"
                   onChange={(event) => {
-                    const imgF = event.target.files[0];
+                    const imgF = event.target.files![0];
                     setImagePreview(URL.createObjectURL(imgF));
                     return setImage(imgF);
                   }}

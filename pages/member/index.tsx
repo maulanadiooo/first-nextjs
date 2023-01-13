@@ -2,10 +2,14 @@ import OverViewContent from "../../components/organisms/OverViewContent";
 import SideBar from "../../components/organisms/SideBar";
 import { jwtPayloadTypes, userTypes } from "../../services/dataTypes";
 import jwtDecode from "jwt-decode";
+import Head from "next/head";
 
 export default function MemberOverview() {
   return (
     <section className="overview overflow-auto">
+      <Head>
+        <title>Store GG</title>
+      </Head>
       <SideBar activeMenu="overview" />
       <OverViewContent />
     </section>

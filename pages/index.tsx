@@ -8,6 +8,7 @@ import FeaturedGame from "../components/organisms/FeaturedGame";
 import Reach from "../components/organisms/Reach";
 import Story from "../components/organisms/Story";
 import Footer from "../components/organisms/Footer";
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -16,6 +17,9 @@ export default function Home() {
   });
   return (
     <>
+      <Head>
+        <title>Store GG</title>
+      </Head>
       <Navbar />
       <MainBanner />
       <TransactionStep />
